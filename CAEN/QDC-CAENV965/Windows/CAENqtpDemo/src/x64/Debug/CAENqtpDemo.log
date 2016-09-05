@@ -1,0 +1,98 @@
+﻿Build started 05/03/2015 19:58:14.
+     1>Project "C:\Program Files (x86)\CAEN\CAENVMEToolBox\CAENqtp\Demo\CAENqtpDemo\src\CAENqtpDemo.vcxproj" on node 2 (Rebuild target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /I"C:\Program Files (x86)\CAEN\CAENVMEToolBox\CAENqtp\Demo\CAENqtpDemo\include\\" /Zi /nologo /W3 /WX- /Od /D WIN32 /D _DEBUG /D _CONSOLE /D _CRT_SECURE_NO_DEPRECATE /D _VC80_UPGRADE=0x0710 /D _MBCS /Gm- /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TC /errorReport:prompt keyb.c main.c user_settings.c
+         keyb.c
+     1>keyb.c(90): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _getch. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\conio.h(131) : see declaration of 'getch'
+         main.c
+         user_settings.c
+     1>user_settings.c(216): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(253) : see declaration of 'stricmp'
+     1>user_settings.c(224): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(253) : see declaration of 'stricmp'
+     1>user_settings.c(232): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(253) : see declaration of 'stricmp'
+     1>user_settings.c(240): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(253) : see declaration of 'stricmp'
+     1>user_settings.c(243): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(253) : see declaration of 'stricmp'
+     1>user_settings.c(245): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(253) : see declaration of 'stricmp'
+     1>user_settings.c(247): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(253) : see declaration of 'stricmp'
+     1>user_settings.c(249): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(253) : see declaration of 'stricmp'
+     1>user_settings.c(251): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(253) : see declaration of 'stricmp'
+     1>user_settings.c(253): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(253) : see declaration of 'stricmp'
+     1>user_settings.c(255): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(253) : see declaration of 'stricmp'
+     1>user_settings.c(257): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(253) : see declaration of 'stricmp'
+     1>user_settings.c(259): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(253) : see declaration of 'stricmp'
+     1>user_settings.c(261): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(253) : see declaration of 'stricmp'
+     1>user_settings.c(271): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(253) : see declaration of 'stricmp'
+     1>user_settings.c(278): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(253) : see declaration of 'stricmp'
+     1>user_settings.c(286): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(253) : see declaration of 'stricmp'
+     1>user_settings.c(293): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(253) : see declaration of 'stricmp'
+     1>user_settings.c(300): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(253) : see declaration of 'stricmp'
+     1>user_settings.c(307): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(253) : see declaration of 'stricmp'
+     1>user_settings.c(314): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(253) : see declaration of 'stricmp'
+     1>user_settings.c(322): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(253) : see declaration of 'stricmp'
+     1>user_settings.c(330): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(253) : see declaration of 'stricmp'
+     1>user_settings.c(337): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(253) : see declaration of 'stricmp'
+     1>user_settings.c(344): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(253) : see declaration of 'stricmp'
+     1>user_settings.c(351): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(253) : see declaration of 'stricmp'
+     1>user_settings.c(358): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(253) : see declaration of 'stricmp'
+     1>user_settings.c(366): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(253) : see declaration of 'stricmp'
+     1>user_settings.c(373): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(253) : see declaration of 'stricmp'
+     1>user_settings.c(380): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(253) : see declaration of 'stricmp'
+     1>user_settings.c(388): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(253) : see declaration of 'stricmp'
+     1>user_settings.c(442): warning C4996: 'strnicmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _strnicmp. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(255) : see declaration of 'strnicmp'
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Program Files (x86)\CAEN\CAENVMEToolBox\CAENqtp\Demo\CAENqtpDemo\x64\Debug\CAENqtpDemo.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Program Files (x86)\CAEN\CAENVMEToolBox\CAENqtp\Demo\CAENqtpDemo\x64\Debug\CAENqtpDemo.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Program Files (x86)\CAEN\CAENVMEToolBox\CAENqtp\Demo\CAENqtpDemo\x64\Debug\CAENqtpDemo.lib" /MACHINE:X64 x64\Debug\keyb.obj
+         x64\Debug\main.obj
+         x64\Debug\user_settings.obj
+         ..\include\CAENVMELib\CAENVMElib.lib
+         ..\include\CAENVMETool\CAENqtpSDK.lib
+     1>main.obj : error LNK2019: unresolved external symbol CAENVME_Init referenced in function main
+     1>main.obj : error LNK2019: unresolved external symbol __imp_cvt_V792_open referenced in function main
+     1>main.obj : error LNK2019: unresolved external symbol __imp_cvt_V792_close referenced in function main
+     1>main.obj : error LNK2019: unresolved external symbol __imp_cvt_V792_set_sliding_scale referenced in function main
+     1>main.obj : error LNK2019: unresolved external symbol __imp_cvt_V792_set_zero_suppression referenced in function main
+     1>main.obj : error LNK2019: unresolved external symbol __imp_cvt_V792_set_dual_range_zero_suppression referenced in function main
+     1>main.obj : error LNK2019: unresolved external symbol __imp_cvt_V792_read_MEB referenced in function main
+     1>main.obj : error LNK2019: unresolved external symbol __imp_cvt_V792_set_acquisition_mode referenced in function main
+     1>main.obj : error LNK2019: unresolved external symbol __imp_cvt_V792_set_readout_mode referenced in function main
+     1>main.obj : error LNK2019: unresolved external symbol __imp_cvt_V792_get_system_info referenced in function main
+     1>main.obj : error LNK2019: unresolved external symbol __imp_cvt_V792_get_piggy_back_str referenced in function main
+     1>main.obj : error LNK2019: unresolved external symbol __imp_cvt_V792_data_clear referenced in function main
+     1>C:\Program Files (x86)\CAEN\CAENVMEToolBox\CAENqtp\Demo\CAENqtpDemo\x64\Debug\CAENqtpDemo.exe : fatal error LNK1120: 12 unresolved externals
+     1>Done Building Project "C:\Program Files (x86)\CAEN\CAENVMEToolBox\CAENqtp\Demo\CAENqtpDemo\src\CAENqtpDemo.vcxproj" (Rebuild target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:01.71

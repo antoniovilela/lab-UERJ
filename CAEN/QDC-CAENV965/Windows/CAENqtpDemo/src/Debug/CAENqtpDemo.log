@@ -1,0 +1,93 @@
+﻿Build started 05/09/2016 18:05:02.
+     1>Project "C:\Users\lfnp\Desktop\CAENLABVIEW\QDC-CAENV965\Demo\CAENqtpDemo\src\CAENqtpDemo.vcxproj" on node 2 (Rebuild target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\lfnp\Desktop\CAENLABVIEW\QDC-CAENV965\Demo\CAENqtpDemo\include\\" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _CRT_SECURE_NO_DEPRECATE /D _VC80_UPGRADE=0x0710 /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt keyb.c main.c user_settings.c
+         user_settings.c
+     1>c:\users\lfnp\desktop\caenlabview\qdc-caenv965\demo\caenqtpdemo\src\user_settings.c(219): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(253) : see declaration of 'stricmp'
+     1>c:\users\lfnp\desktop\caenlabview\qdc-caenv965\demo\caenqtpdemo\src\user_settings.c(227): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(253) : see declaration of 'stricmp'
+     1>c:\users\lfnp\desktop\caenlabview\qdc-caenv965\demo\caenqtpdemo\src\user_settings.c(235): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(253) : see declaration of 'stricmp'
+     1>c:\users\lfnp\desktop\caenlabview\qdc-caenv965\demo\caenqtpdemo\src\user_settings.c(243): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(253) : see declaration of 'stricmp'
+     1>c:\users\lfnp\desktop\caenlabview\qdc-caenv965\demo\caenqtpdemo\src\user_settings.c(246): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(253) : see declaration of 'stricmp'
+     1>c:\users\lfnp\desktop\caenlabview\qdc-caenv965\demo\caenqtpdemo\src\user_settings.c(248): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(253) : see declaration of 'stricmp'
+     1>c:\users\lfnp\desktop\caenlabview\qdc-caenv965\demo\caenqtpdemo\src\user_settings.c(250): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(253) : see declaration of 'stricmp'
+     1>c:\users\lfnp\desktop\caenlabview\qdc-caenv965\demo\caenqtpdemo\src\user_settings.c(252): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(253) : see declaration of 'stricmp'
+     1>c:\users\lfnp\desktop\caenlabview\qdc-caenv965\demo\caenqtpdemo\src\user_settings.c(254): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(253) : see declaration of 'stricmp'
+     1>c:\users\lfnp\desktop\caenlabview\qdc-caenv965\demo\caenqtpdemo\src\user_settings.c(256): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(253) : see declaration of 'stricmp'
+     1>c:\users\lfnp\desktop\caenlabview\qdc-caenv965\demo\caenqtpdemo\src\user_settings.c(258): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(253) : see declaration of 'stricmp'
+     1>c:\users\lfnp\desktop\caenlabview\qdc-caenv965\demo\caenqtpdemo\src\user_settings.c(260): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(253) : see declaration of 'stricmp'
+     1>c:\users\lfnp\desktop\caenlabview\qdc-caenv965\demo\caenqtpdemo\src\user_settings.c(262): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(253) : see declaration of 'stricmp'
+     1>c:\users\lfnp\desktop\caenlabview\qdc-caenv965\demo\caenqtpdemo\src\user_settings.c(264): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(253) : see declaration of 'stricmp'
+     1>c:\users\lfnp\desktop\caenlabview\qdc-caenv965\demo\caenqtpdemo\src\user_settings.c(274): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(253) : see declaration of 'stricmp'
+     1>c:\users\lfnp\desktop\caenlabview\qdc-caenv965\demo\caenqtpdemo\src\user_settings.c(281): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(253) : see declaration of 'stricmp'
+     1>c:\users\lfnp\desktop\caenlabview\qdc-caenv965\demo\caenqtpdemo\src\user_settings.c(289): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(253) : see declaration of 'stricmp'
+     1>c:\users\lfnp\desktop\caenlabview\qdc-caenv965\demo\caenqtpdemo\src\user_settings.c(296): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(253) : see declaration of 'stricmp'
+     1>c:\users\lfnp\desktop\caenlabview\qdc-caenv965\demo\caenqtpdemo\src\user_settings.c(303): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(253) : see declaration of 'stricmp'
+     1>c:\users\lfnp\desktop\caenlabview\qdc-caenv965\demo\caenqtpdemo\src\user_settings.c(310): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(253) : see declaration of 'stricmp'
+     1>c:\users\lfnp\desktop\caenlabview\qdc-caenv965\demo\caenqtpdemo\src\user_settings.c(317): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(253) : see declaration of 'stricmp'
+     1>c:\users\lfnp\desktop\caenlabview\qdc-caenv965\demo\caenqtpdemo\src\user_settings.c(325): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(253) : see declaration of 'stricmp'
+     1>c:\users\lfnp\desktop\caenlabview\qdc-caenv965\demo\caenqtpdemo\src\user_settings.c(333): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(253) : see declaration of 'stricmp'
+     1>c:\users\lfnp\desktop\caenlabview\qdc-caenv965\demo\caenqtpdemo\src\user_settings.c(340): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(253) : see declaration of 'stricmp'
+     1>c:\users\lfnp\desktop\caenlabview\qdc-caenv965\demo\caenqtpdemo\src\user_settings.c(347): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(253) : see declaration of 'stricmp'
+     1>c:\users\lfnp\desktop\caenlabview\qdc-caenv965\demo\caenqtpdemo\src\user_settings.c(354): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(253) : see declaration of 'stricmp'
+     1>c:\users\lfnp\desktop\caenlabview\qdc-caenv965\demo\caenqtpdemo\src\user_settings.c(361): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(253) : see declaration of 'stricmp'
+     1>c:\users\lfnp\desktop\caenlabview\qdc-caenv965\demo\caenqtpdemo\src\user_settings.c(369): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(253) : see declaration of 'stricmp'
+     1>c:\users\lfnp\desktop\caenlabview\qdc-caenv965\demo\caenqtpdemo\src\user_settings.c(376): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(253) : see declaration of 'stricmp'
+     1>c:\users\lfnp\desktop\caenlabview\qdc-caenv965\demo\caenqtpdemo\src\user_settings.c(383): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(253) : see declaration of 'stricmp'
+     1>c:\users\lfnp\desktop\caenlabview\qdc-caenv965\demo\caenqtpdemo\src\user_settings.c(391): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _stricmp. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(253) : see declaration of 'stricmp'
+     1>c:\users\lfnp\desktop\caenlabview\qdc-caenv965\demo\caenqtpdemo\src\user_settings.c(445): warning C4996: 'strnicmp': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _strnicmp. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(255) : see declaration of 'strnicmp'
+         main.c
+     1>c:\users\lfnp\desktop\caenlabview\qdc-caenv965\demo\caenqtpdemo\src\main.c(164): warning C4101: 'aux_string' : unreferenced local variable
+         keyb.c
+     1>c:\users\lfnp\desktop\caenlabview\qdc-caenv965\demo\caenqtpdemo\src\keyb.c(90): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _getch. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\conio.h(131) : see declaration of 'getch'
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"Debug\CAENqtpDemo.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"Debug\CAENqtpDemo.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"Debug\CAENqtpDemo.lib" /MACHINE:X86 /SAFESEH Debug\keyb.obj
+         Debug\main.obj
+         Debug\user_settings.obj
+         ..\..\..\SDK\CAENqtpSDK\Debug\CAENqtpSDK.lib
+         ..\..\..\SDK\common\include\CAENVMELib\CAENVMElib.lib
+     1>keyb.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+         CAENqtpDemo.vcxproj -> C:\Users\lfnp\Desktop\CAENLABVIEW\QDC-CAENV965\Demo\CAENqtpDemo\src\Debug\CAENqtpDemo.exe
+       PostBuildEvent:
+         copy /Y "C:\Users\lfnp\Desktop\CAENLABVIEW\QDC-CAENV965\Demo\CAENqtpDemo\src\*.conf" "C:\Users\lfnp\Desktop\CAENLABVIEW\QDC-CAENV965\Demo\CAENqtpDemo\src\Debug\"
+         :VCEnd
+         C:\Users\lfnp\Desktop\CAENLABVIEW\QDC-CAENV965\Demo\CAENqtpDemo\src\CAENqtpDemo.conf
+                 1 arquivo(s) copiado(s).
+     1>Done Building Project "C:\Users\lfnp\Desktop\CAENLABVIEW\QDC-CAENV965\Demo\CAENqtpDemo\src\CAENqtpDemo.vcxproj" (Rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.14
