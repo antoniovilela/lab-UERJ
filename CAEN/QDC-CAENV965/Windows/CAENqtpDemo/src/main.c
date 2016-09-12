@@ -48,11 +48,18 @@
 ////////////////////////////////////////////
 // File local defines
 ////////////////////////////////////////////
-#define HDR_STR				" HDR              - GEO  : %08x CRATE         : %08x CH COUNT : %08x \n"
-#define DATUM_STR			"  DATUM           - GEO  : %08x CHANNEL       : %08x ADC      : %08x UN : %08x OV : %08x \n"
+//#define HDR_STR				" HDR              - GEO  : %08x CRATE         : %08x CH COUNT : %08x \n"
+//#define DATUM_STR			"  DATUM           - GEO  : %08x CHANNEL       : %08x ADC      : %08x UN : %08x OV : %08x \n"
+//#define NOT_VALID_DATUM_STR	"  NOT VALID DATUM - \n"
+//#define EOB_STR				" EOB              - GEO  : %08x EVENT COUNTER : %08x \n"
+//#define UNKNOWN_STR			"\n??? UNKNOWN TAG ??? -          READ WORD     : %08x \n\n"
+
+#define HDR_STR				" HDR              - GEO  : %08x CRATE         : %d CH COUNT : %d \n"
+#define DATUM_STR			"  DATUM           - GEO  : %08x CHANNEL       : %d ADC      : %d UN : %d OV : %d \n"
 #define NOT_VALID_DATUM_STR	"  NOT VALID DATUM - \n"
-#define EOB_STR				" EOB              - GEO  : %08x EVENT COUNTER : %08x \n"
+#define EOB_STR				" EOB              - GEO  : %08x EVENT COUNTER : %d \n"
 #define UNKNOWN_STR			"\n??? UNKNOWN TAG ??? -          READ WORD     : %08x \n\n"
+
 
 #define MAX_HISTO_SAMPLES	(CVT_V792_DATUM_ADC_MSK+ 1)
 #define MAX_HISTO_CHANNELS	MAX_THRESHOLD_NUM
@@ -481,6 +488,9 @@ int main(int argc, char **argv)
 
             while (((long)(data_size-=4) >= 0)&&
                     (( read_events< user_setting.m_num_events)|| (user_setting.m_num_events<= 0))) {
+
+				if ( read_events % 100 == 0 ) printf(" ev: %ld data size: %d\n",read_events,data_size);
+
                 UINT32 data= *(tmp_buff++);
                 *line= '\0';
 
