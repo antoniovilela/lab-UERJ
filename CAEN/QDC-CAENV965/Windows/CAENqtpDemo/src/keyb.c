@@ -87,7 +87,7 @@ int getstring( char* string, int max_len) {
     int done= 0;
     int len= 0;
     while ( !done) {
-        switch ( read_char= getch()) {
+        switch ( read_char= getchar()) {
         case '\r':
             done= 1;
             break;

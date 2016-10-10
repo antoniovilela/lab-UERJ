@@ -43,8 +43,4 @@
     <Text Include="..\doc\revision_history.txt" />
     <Text Include="..\doc\to_do.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Library Include="..\..\..\..\..\..\..\QDC-CAENV965\SDK\CAENqtpSDK\Debug\CAENqtpSDK.lib" />
-    <Library Include="..\include\CAENVMELib\CAENVMElib.lib" />
-  </ItemGroup>
 </Project>

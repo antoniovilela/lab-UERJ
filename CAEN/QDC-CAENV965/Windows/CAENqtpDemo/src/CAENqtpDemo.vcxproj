@@ -54,7 +54,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(SolutionDir)include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)include\;C:\Users\lfnp\Desktop\CAENLABVIEW\QDC-CAENV965\SDK\CAENqtpSDK;C:\Users\lfnp\Desktop\CAENLABVIEW\QDC-CAENV965\SDK\CAENqtpSDK\common\src;C:\Users\lfnp\Desktop\CAENLABVIEW\QDC-CAENV965\SDK\CAENqtpSDK\common\include\CAENVMELib</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -69,10 +69,16 @@
       <ProgramDatabaseFile>$(OutDir)CAENqtpDemo.pdb</ProgramDatabaseFile>
       <SubSystem>Console</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;C:\Users\lfnp\Desktop\CAENLABVIEW\QDC-CAENV965\SDK\CAENqtpSDK\Debug\CAENqtpSDK.lib;C:\Users\lfnp\Desktop\CAENLABVIEW\QDC-CAENV965\SDK\common\include\CAENVMELib\CAENVMElib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\lfnp\Desktop\CAENLABVIEW\QDC-CAENV965\SDK\CAENqtpSDK\Debug;C:\Users\lfnp\Desktop\CAENLABVIEW\QDC-CAENV965\SDK\common\include\CAENVMELib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>copy /Y "$(ProjectDir)*.conf" "$(TargetDir)"</Command>
     </PostBuildEvent>
+    <ProjectReference>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -110,10 +116,6 @@
   <ItemGroup>
     <Text Include="..\doc\revision_history.txt" />
     <Text Include="..\doc\to_do.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Library Include="..\..\..\..\..\..\..\QDC-CAENV965\SDK\CAENqtpSDK\Debug\CAENqtpSDK.lib" />
-    <Library Include="..\include\CAENVMELib\CAENVMElib.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

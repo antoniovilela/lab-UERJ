@@ -15,9 +15,10 @@
 // File includes
 ////////////////////////////////////////////
 #include "common_defs.h"
-#include "../include/CAENVMETool/cvt_board_commons.h"
-#include "../include/CAENVMETool/cvt_common_defs.h"
-#include "../include/CAENVMETool/cvt_V792.h"
+//#include "../include/CAENVMETool/cvt_board_commons.h"
+#include "cvt_board_commons.h"
+#include "cvt_common_defs.h"
+#include "cvt_V792.h"
 
 ////////////////////////////////////////////
 // Global defines
@@ -69,6 +70,7 @@ typedef struct {
     char* m_config_filename;									/*!< The configuration filename */
     char* m_parsed_output_filename;								/*!< The name for parsed data output data file */
     char* m_raw_output_filename;								/*!< The name for raw output data file */
+	char* m_analysis_output_filename;
     UINT16 m_base_address;										/*!< The board base address */
 
     long m_num_events;											/*!< Number of events to acquire */

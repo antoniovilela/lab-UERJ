@@ -12,9 +12,11 @@
 ////////////////////////////////////////////
 // File includes
 ////////////////////////////////////////////
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdarg.h>
+
 #ifdef WIN32
 #include <time.h>
 #include <sys/timeb.h>
@@ -31,11 +33,13 @@
 #endif
 
 #include "common_defs.h"
-#include "../include/CAENVMETool/cvt_board_commons.h"
-#include "../include/CAENVMETool/cvt_common_defs.h"
-#include "../include/CAENVMETool/cvt_V792.h"
+//#include "../include/CAENVMETool/cvt_board_commons.h"
+//#include "../include/CAENVMETool/cvt_common_defs.h"
+//#include "../include/CAENVMETool/cvt_V792.h"
+#include "cvt_board_commons.h"
+#include "cvt_common_defs.h"
+#include "cvt_V792.h"
 #include "user_settings.h"
-
 
 // Executable gnuplot. NOTE: use pgnuplot instead of wgnuplot in Windows, otherwise
 // the pipe will not work.
@@ -60,6 +64,8 @@
 #define EOB_STR				" EOB              - GEO  : %08x EVENT COUNTER : %d \n"
 #define UNKNOWN_STR			"\n??? UNKNOWN TAG ??? -          READ WORD     : %08x \n\n"
 
+#define EVENT_COUNT_STR		"EV %d \n"
+#define DATA_OUT_STR		"CH %d ADC %d UN %d OV %d \n"
 
 #define MAX_HISTO_SAMPLES	(CVT_V792_DATUM_ADC_MSK+ 1)
 #define MAX_HISTO_CHANNELS	MAX_THRESHOLD_NUM
@@ -159,6 +165,7 @@ int main(int argc, char **argv)
     user_setting_data user_setting;					// user settings
     FILE* parsed_out_file= NULL;					// parsed output file
     FILE* raw_out_file= NULL;						// raw output file
+	FILE* analysis_out_file = NULL;
     UINT8 *data_buff= NULL;							// read data buffer
     UINT32 data_size;
     int32_t vme_handle= -1;							// The CAENVMELib handle
@@ -168,9 +175,8 @@ int main(int argc, char **argv)
     unsigned long *histo_buff[ MAX_HISTO_CHANNELS];	// Histogram data buffer
     FILE* gnu_plot_pipe= NULL;						// gnu_plot pipe
     long next_refresh= 0;
-    char aux_string[ 100];
+    //char aux_string[100];
     int act_channel= 0;
-
 
     /////////////////////////////////////////
     // Demo application specific
@@ -179,7 +185,6 @@ int main(int argc, char **argv)
     memset( &user_setting, 0, sizeof( user_setting));
     memset( &board_data, 0, sizeof( board_data));
     memset( histo_buff, 0, MAX_HISTO_CHANNELS* sizeof( histo_buff[0]));
-
 
     //
     // print header
@@ -216,7 +221,7 @@ int main(int argc, char **argv)
             break;
         }
         TRACE("VME INIT ERROR :  press 'Q' to quit or any other key to retry\n");
-        if ( toupper( getch()) == 'Q') {
+        if ( toupper( getchar()) == 'Q') {
             ret_val= -3;
             goto exit_point;
         }
@@ -337,6 +342,17 @@ int main(int argc, char **argv)
     }
     TRACE(  " Ok\n");
 
+	//
+	// Pedestal
+	TRACE(" Setting pedestal ...");
+	UINT32 pedestal_value = 180;
+	if ( !cvt_V792_set_pedestal(&board_data, pedestal_value) ) {
+		TRACE("Error executing cvt_V792_set_pedestal \n");
+		ret_val = -5;
+		goto exit_point;
+	}
+	TRACE(" Ok\n");
+	
     // Allocate buffer storage
     data_buff= malloc( DATA_BUFF_SIZE);
     if ( data_buff== NULL) {
@@ -367,6 +383,14 @@ int main(int argc, char **argv)
             goto exit_point;
         }
     }
+	if (strlen(user_setting.m_analysis_output_filename)) {
+		// Create output files
+		if ((analysis_out_file = fopen(user_setting.m_analysis_output_filename, "wt")) == NULL) {
+			TRACE1("Error creating analysis output file '%s'", user_setting.m_analysis_output_filename);
+			ret_val = -5;
+			goto exit_point;
+		}
+	}
     if ( strlen( user_setting.m_raw_output_filename)) {
         if ( ( raw_out_file= fopen( user_setting.m_raw_output_filename, "w+b"))== NULL) {
             TRACE1( "Error creating raw output file '%s' \n", user_setting.m_raw_output_filename);
@@ -379,7 +403,7 @@ int main(int argc, char **argv)
     // Start acquisition
     TRACE( "\n");
     TRACE( "\nHit 's' to start acquisition , any other to quit ...\n");
-    switch ( getch()) {
+    switch ( getchar() ) {
     case 's':
     case 'S':
         break;
@@ -387,6 +411,29 @@ int main(int argc, char **argv)
         ret_val= -4;
         goto exit_point;
     }
+
+	// Read pedestal
+	/*UINT32 pedestal_read = 0;
+	if ( !cvt_V792_read_pedestal(&board_data, &pedestal_read) ) {
+		TRACE(" \nError executing cvt_V792_read_pedestal \n");
+		ret_val = -5;
+		goto exit_point;
+	}*/
+
+	UINT32 pedestal_read = 0;
+	UINT16 reg_value;
+	// Iped register
+	if ( !cvt_read_reg(&board_data.m_common_data, CVT_V792_IPED_INDEX, &reg_value) )
+	{
+		TRACE("V792 IPED read failed !\n");
+		TRACE(" \nError executing cvt_V792_read_pedestal \n");
+		ret_val = -5;
+		goto exit_point;
+	}
+	pedestal_read = (UINT32)( reg_value & 0x00ff );
+
+	TRACE1("Pedestal: %d", pedestal_read);
+
     // open gnuplot for the first time
     /*{
         char *gnu_plot_filename= (char*)malloc( MAX_FILENAME_LENGHT);
@@ -428,7 +475,7 @@ int main(int argc, char **argv)
         data_size= DATA_BUFF_SIZE;
         while ( paused ) {
             if ( kbhit() ) {
-                switch ( getch() ) {
+                switch ( getchar() ) {
                 /*case 'r':
                 case 'R': {
                     // reset the histogram here
@@ -485,6 +532,8 @@ int main(int argc, char **argv)
             UINT32 *tmp_buff= (UINT32*)data_buff;
             char line[400];
             size_t str_len;
+			char line_analysis[400];
+			size_t str_analysis_len;
 
             while (((long)(data_size-=4) >= 0)&&
                     (( read_events< user_setting.m_num_events)|| (user_setting.m_num_events<= 0))) {
@@ -493,9 +542,10 @@ int main(int argc, char **argv)
 
                 UINT32 data= *(tmp_buff++);
                 *line= '\0';
+				*line_analysis = '\0';
 
                 if ( kbhit() ) {
-                    switch ( getch() ) {
+                    switch ( getchar() ) {
                     /*case 'r':
                     case 'R': 
 						{
@@ -538,7 +588,8 @@ int main(int argc, char **argv)
 						UINT32 event_count= CVT_QTP_GET_EOB_EVENT_COUNT( data);
 
 						sprintf( line, EOB_STR, geo, event_count);
-
+						sprintf( line_analysis, EVENT_COUNT_STR, event_count);
+						
 						++read_events;
 	                }
 		            break;
@@ -550,7 +601,7 @@ int main(int argc, char **argv)
 						UINT32 adc= CVT_V792_GET_DATUM_ADC( data);
 						UINT32 un= CVT_V792_GET_DATUM_UN( data);
 						UINT32 ov= CVT_V792_GET_DATUM_OV( data);
-
+						
 						switch ( user_setting.m_qtp_type) {
 						case CVT_V792_TYPE_A:
 							ch= CVT_V792A_GET_DATUM_CH( data);
@@ -586,10 +637,11 @@ int main(int argc, char **argv)
 						}
 						// Histogram update
 						// sanity checks
-						if ( ch< sizeof( histo_buff)/sizeof( histo_buff[0])) {
+						/*if ( ch< sizeof( histo_buff)/sizeof( histo_buff[0])) {
 							++histo_buff[ ch][ adc& (MAX_HISTO_SAMPLES- 1)];
-						}
+						}*/
 						sprintf( line, DATUM_STR, geo, ch, adc, un, ov);
+						sprintf( line_analysis, DATA_OUT_STR, ch, adc, un, ov);
 					}
 					break;
                 case CVT_QTP_NOT_VALID_DATUM: 
@@ -601,15 +653,25 @@ int main(int argc, char **argv)
                     // sprintf( line, UNKNOWN_STR, data);
 					break;
                 }
-                if ( (str_len= strlen( line))> 0) {
-                    if ( parsed_out_file) {
-                        if ( fwrite( line, 1, str_len, parsed_out_file)!= str_len) {
-                            // error writing file
-                            TRACE1( "\nError writing parsed output file '%s' \n", user_setting.m_parsed_output_filename);
-                            ret_val= -5;
-                            goto exit_point;
-                        }
-                    }
+				if ((str_len = strlen(line)) > 0) {
+					if (parsed_out_file) {
+						if (fwrite(line, 1, str_len, parsed_out_file) != str_len) {
+							// error writing file
+							TRACE1("\nError writing parsed output file '%s' \n", user_setting.m_parsed_output_filename);
+							ret_val = -5;
+							goto exit_point;
+						}
+					}
+				}
+				if ((str_analysis_len = strlen(line_analysis)) > 0) {
+					if (analysis_out_file) {
+						if (fwrite(line_analysis, 1, str_analysis_len, analysis_out_file) != str_analysis_len) {
+							// error writing file
+							TRACE1("\nError writing analysis output file '%s' \n", user_setting.m_analysis_output_filename);
+							ret_val = -5;
+							goto exit_point;
+						}
+					}
                 }
             }
         }
@@ -629,7 +691,7 @@ int main(int argc, char **argv)
             for ( sample= 0; sample< MAX_HISTO_SAMPLES; sample++) {
                 // Check for user commands
                 if ( kbhit()) {
-                    switch ( getch()) {
+                    switch ( getchar()) {
                     case 'r':
                     case 'R': 
 						{
@@ -720,7 +782,7 @@ exit_point:
     user_settings_close( &user_setting);
 
     TRACE( "Hit a key to exit ...");
-    getch();
+    getchar();
 
     return ret_val;
 }

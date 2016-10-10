@@ -36,7 +36,8 @@
 // File local defines
 ////////////////////////////////////////////
 #define DEF_RAW_OUTPUT_FILENAME				"raw_values.dat"					/*!< Raw board values default filename */
-#define DEF_PARSED_OUTPUT_FILENAME			"parsed_values.dat"					/*!< Parsed board values default filename */
+#define DEF_PARSED_OUTPUT_FILENAME			"parsed_values.txt"					/*!< Parsed board values default filename */
+#define DEF_ANALYSIS_OUTPUT_FILENAME		"analysis_values.txt"
 
 #define DEF_NUM_EVENTS						-1									/*!< Default number of events */
 //#define DEF_BASE_ADDRESS					0x3210								/*!< Default boards' base address */
@@ -73,6 +74,7 @@ BOOL user_settings_open( user_setting_data* p_data) {
     // module variable init
     p_data->m_raw_output_filename= (char*)malloc( MAX_FILENAME_LENGHT);
     p_data->m_parsed_output_filename= (char*)malloc( MAX_FILENAME_LENGHT);
+	p_data->m_analysis_output_filename = (char*)malloc(MAX_FILENAME_LENGHT);
 
     p_data->m_gnu_plot_path= (char*)malloc( MAX_FILENAME_LENGHT);
     p_data->m_config_filename= (char*)malloc( MAX_FILENAME_LENGHT);
@@ -91,6 +93,13 @@ BOOL user_settings_open( user_setting_data* p_data) {
         TRACE("user setting module: insufficient memory !\n");
 	} else {
         strcpy( p_data->m_parsed_output_filename, DEF_PARSED_OUTPUT_FILENAME);
+	}
+
+	if (p_data->m_analysis_output_filename == NULL) {
+		TRACE("user setting module: insufficient memory !\n");
+	}
+	else {
+		strcpy(p_data->m_analysis_output_filename, DEF_ANALYSIS_OUTPUT_FILENAME);
 	}
 
 	if ( p_data->m_gnu_plot_path== NULL) {
@@ -130,10 +139,13 @@ BOOL user_settings_close( user_setting_data* p_data) {
         free( p_data->m_raw_output_filename);
     if ( p_data->m_parsed_output_filename)
         free( p_data->m_parsed_output_filename);
+	if (p_data->m_analysis_output_filename)
+		free(p_data->m_analysis_output_filename);
 
     // setting invalid values ...
     p_data->m_raw_output_filename= NULL;
     p_data->m_parsed_output_filename= NULL;
+	p_data->m_analysis_output_filename = NULL;
 
     return TRUE;
 }
@@ -216,7 +228,7 @@ BOOL parse_config_file( user_setting_data* p_data) {
         }
 
         // The board base address (16 bytes MSW hex format)
-        if ( !stricmp(str, "BASE_ADDRESS")) {
+        if ( !strcmp(str, "BASE_ADDRESS")) {
             int value= 0;
             sscanf( line, "%x", &value);
             p_data->m_base_address= value;
@@ -224,7 +236,7 @@ BOOL parse_config_file( user_setting_data* p_data) {
         }
 
         // The link number (dec format)
-        if ( !stricmp(str, "LINK_NUMBER")) {
+        if ( !strcmp(str, "LINK_NUMBER")) {
             int value= 0;
             sscanf( line, "%d", &value);
 			p_data->m_link_number= value;
@@ -232,7 +244,7 @@ BOOL parse_config_file( user_setting_data* p_data) {
         }
 
         // The board number (dec format)
-        if ( !stricmp(str, "BOARD_NUMBER")) {
+        if ( !strcmp(str, "BOARD_NUMBER")) {
             int value= 0;
             sscanf( line, "%d", &value);
 			p_data->m_board_number= value;
@@ -240,28 +252,28 @@ BOOL parse_config_file( user_setting_data* p_data) {
         }
 
         // The QTP's type: Valid values are: V792A, V792N
-        if ( !stricmp(str, "QTP_TYPE")) {
+        if ( !strcmp(str, "QTP_TYPE")) {
             char value[ 100];
             sscanf( line, "%s", value);
-            if ( !stricmp( value, "v792a")) {
+            if ( !strcmp( value, "v792a")) {
                 p_data->m_qtp_type= CVT_V792_TYPE_A;
-            } else if ( !stricmp( value, "v792n")) {
+            } else if ( !strcmp( value, "v792n")) {
                 p_data->m_qtp_type= CVT_V792_TYPE_N;
-            } else if ( !stricmp( value, "v862a")) {
+            } else if ( !strcmp( value, "v862a")) {
                 p_data->m_qtp_type= CVT_V862_TYPE_A;
-            } else if ( !stricmp( value, "v965")) {
+            } else if ( !strcmp( value, "v965")) {
                 p_data->m_qtp_type= CVT_V965;
-            } else if ( !stricmp( value, "v965a")) {
+            } else if ( !strcmp( value, "v965a")) {
                 p_data->m_qtp_type= CVT_V965_TYPE_A;
-            } else if ( !stricmp( value, "v785a")) {
+            } else if ( !strcmp( value, "v785a")) {
                 p_data->m_qtp_type= CVT_V785_TYPE_A;
-            } else if ( !stricmp( value, "v785n")) {
+            } else if ( !strcmp( value, "v785n")) {
                 p_data->m_qtp_type= CVT_V785_TYPE_N;
-            } else if ( !stricmp( value, "v1785")) {
+            } else if ( !strcmp( value, "v1785")) {
                 p_data->m_qtp_type= CVT_V1785;
-            } else if ( !stricmp( value, "v775a")) {
+            } else if ( !strcmp( value, "v775a")) {
                 p_data->m_qtp_type= CVT_V775_TYPE_A;
-            } else if ( !stricmp( value, "v775n")) {
+            } else if ( !strcmp( value, "v775n")) {
                 p_data->m_qtp_type= CVT_V775_TYPE_N;
             } else {
                 // Bad parameter
@@ -271,14 +283,14 @@ BOOL parse_config_file( user_setting_data* p_data) {
         }
         // The number of events to acquire:
         // A non positive number means don't care (i.e. acquire until key pressed)
-        if ( !stricmp(str, "NUM_EVENTS")) {
+        if ( !strcmp(str, "NUM_EVENTS")) {
             long value= 0;
             sscanf( line, "%ld", &value);
             p_data->m_num_events= value;
             continue;
         }
         // The zero suppression threshold resolution
-        if ( !stricmp(str, "STEP_THRESHOLD")) {
+        if ( !strcmp(str, "STEP_THRESHOLD")) {
             int value= 0;
             sscanf( line, "%d", &value);
             p_data->m_zero_suppression_param.m_step_threshold= value;
@@ -286,35 +298,35 @@ BOOL parse_config_file( user_setting_data* p_data) {
         }
         // The thresholds buffer (value and kill bit) (comma separated values)
 		// for dual range boards (V965, V1785) these are the low range thresholds
-        if ( !stricmp(str, "THRESHOLDS")) {
+        if ( !strcmp(str, "THRESHOLDS")) {
             char value[ 100];
             sscanf( line, "%s", value);
 			parse_zero_suppression_thresholds( value, p_data->m_zero_suppression_param.m_thresholds_buff);
             continue;
         }
         // The high range thresholds buffer (value and kill bit) (comma separated values) just for dual range boards (V965, V1785)
-        if ( !stricmp(str, "THRESHOLDS_HIGH")) {
+        if ( !strcmp(str, "THRESHOLDS_HIGH")) {
             char value[ 100];
             sscanf( line, "%s", value);
 			parse_zero_suppression_thresholds( value, p_data->m_zero_suppression_param.m_high_thresholds_buff);
             continue;
         }
         // Enable/Disable the sliding scale feature ( set a non zero value to enable)
-        if ( !stricmp(str, "SLIDING_SCALE_ENABLE")) {
+        if ( !strcmp(str, "SLIDING_SCALE_ENABLE")) {
             int value= 0;
             sscanf( line, "%d", &value);
             p_data->m_acquisition_mode_param.m_sliding_scale_enable= value!= 0;
             continue;
         }
         // Enable/Disable the zero suppression ( set a non zero value to enable)
-        if ( !stricmp(str, "ZERO_SUPPRESSION_ENABLE")) {
+        if ( !strcmp(str, "ZERO_SUPPRESSION_ENABLE")) {
             int value= 0;
             sscanf( line, "%d", &value);
             p_data->m_acquisition_mode_param.m_zero_suppression_enable= value!= 0;
             continue;
         }
         // Enable/Disable the overflow suppression feature ( set a non zero value to enable)
-        if ( !stricmp(str, "OVERFLOW_SUPPRESSION_ENABLE")) {
+        if ( !strcmp(str, "OVERFLOW_SUPPRESSION_ENABLE")) {
             int value= 0;
             sscanf( line, "%d", &value);
             p_data->m_acquisition_mode_param.m_overflow_suppression_enable= value!= 0;
@@ -322,7 +334,7 @@ BOOL parse_config_file( user_setting_data* p_data) {
         }
         // Enable/Disable the valid suppression feature ( set a non zero value to enable)
 	// V775 ONLY!!!!
-        if ( !stricmp(str, "VALID_SUPPRESSION_ENABLE")) {
+        if ( !strcmp(str, "VALID_SUPPRESSION_ENABLE")) {
             int value= 0;
             sscanf( line, "%d", &value);
             p_data->m_acquisition_mode_param.m_valid_suppression_enable= value!= 0;
@@ -330,35 +342,35 @@ BOOL parse_config_file( user_setting_data* p_data) {
         }
         // Enable/Disable the common stop acquisition mode ( set a non zero value to enable)
 	// V775 ONLY!!!!
-        if ( !stricmp(str, "COMMON_STOP_ENABLE")) {
+        if ( !strcmp(str, "COMMON_STOP_ENABLE")) {
             int value= 0;
             sscanf( line, "%d", &value);
             p_data->m_acquisition_mode_param.m_common_stop_enable= value!= 0;
             continue;
         }
         // Enable/Disable empty event storing feature ( set a non zero value to enable)
-        if ( !stricmp(str, "EMPTY_ENABLE")) {
+        if ( !strcmp(str, "EMPTY_ENABLE")) {
             int value= 0;
             sscanf( line, "%d", &value);
             p_data->m_acquisition_mode_param.m_empty_enable= value!= 0;
             continue;
         }
         // Enable/Disable counting all triggers or accepted one only ( set a non zero value to enable)
-        if ( !stricmp(str, "COUNT_ALL_EVENTS")) {
+        if ( !strcmp(str, "COUNT_ALL_EVENTS")) {
             int value= 0;
             sscanf( line, "%d", &value);
             p_data->m_acquisition_mode_param.m_count_all_events= value!= 0;
             continue;
         }
         // enable debugging
-        if (!stricmp(str, "DEBUG")) {
+        if (!strcmp(str, "DEBUG")) {
             int value= 0;
             sscanf(line, "%d", &value);
             p_data->m_debug= value!= 0;
             continue;
         }
         // The path of the for where the gnuplot executable is installed
-        if (!stricmp(str, "GNUPLOT_PATH")) {
+        if (!strcmp(str, "GNUPLOT_PATH")) {
             char value[ MAX_FILENAME_LENGHT];
 			value[0]= '\0';
             sscanf( line, "%s", value);
@@ -366,21 +378,21 @@ BOOL parse_config_file( user_setting_data* p_data) {
             continue;
         }
         // Gnu plot refresh rate (msec)
-        if (!stricmp(str, "GNU_PLOT_REFRESH")) {
+        if (!strcmp(str, "GNU_PLOT_REFRESH")) {
             int value= 0;
             sscanf( line, "%d", &value);
             p_data->m_gnu_plot_refresh= value;
             continue;
         }
         // GnuPlot X conversion factor
-        if (!stricmp(str, "GNU_PLOT_X_SCALE")) {
+        if (!strcmp(str, "GNU_PLOT_X_SCALE")) {
             float value= 0;
             sscanf(line, "%f", &value);
             p_data->m_gnu_plot_x_scale= value;
             continue;
         }
         // Raw readout data log filename: set to empty string to disable log
-        if (!stricmp(str, "RAW_LOG_FILENAME")) {
+        if (!strcmp(str, "RAW_LOG_FILENAME")) {
             char value[ MAX_FILENAME_LENGHT];
 			value[0]= '\0';
             sscanf( line, "%s", value);
@@ -388,13 +400,21 @@ BOOL parse_config_file( user_setting_data* p_data) {
             continue;
         }
         // Parsed readout data log filename: set to empty string to disable log
-        if (!stricmp(str, "PARSED_LOG_FILENAME")) {
+        if (!strcmp(str, "PARSED_LOG_FILENAME")) {
             char value[ MAX_FILENAME_LENGHT];
 			value[0]= '\0';
             sscanf( line, "%s", value);
             strcpy( p_data->m_parsed_output_filename, trim( trim_text_charset, sizeof( trim_text_charset), value));
             continue;
         }
+
+		if (!strcmp(str, "ANALYSIS_LOG_FILENAME")) {
+			char value[MAX_FILENAME_LENGHT];
+			value[0] = '\0';
+			sscanf(line, "%s", value);
+			strcpy(p_data->m_analysis_output_filename, trim(trim_text_charset, sizeof(trim_text_charset), value));
+			continue;
+		}
     }
     TRACE(  " Done \n");
     fclose( p_conf_file);
@@ -442,7 +462,7 @@ BOOL parse_zero_suppression_thresholds( const char* line, UINT16 *thresholds_buf
     tok= strtok( buff, ", ");
     for ( i= 0; ( i< MAX_THRESHOLD_NUM)&& tok; i++) {
         int tmp= 0;
-        if ( !strnicmp( tok, "0x", 2)) {
+        if ( !strncmp( tok, "0x", 2)) {
             // hex format
             sscanf( tok+ 2, "%x", &tmp);
         } else {
